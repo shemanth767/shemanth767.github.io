@@ -3,8 +3,8 @@ title:       Sai Hemanth's Blog
 email:       saihemanth.official@gmail.com
 author:      Sai Hemanth
 description: "Weekend Tech Adventures of a 9-5 Software Engineer."
-baseurl:     "/blog"
-url:         "https://saihemanth.com"
+baseurl:     ""
+url:         "https://blog.saihemanth.com"
 date_format: "%b %-d, %Y"
 header_pages:
 
