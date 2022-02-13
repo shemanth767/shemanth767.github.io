@@ -1,7 +1,7 @@
 ---
 title: Control your npm dependencies
 date: 2021-12-05 09:00:00 +0530
-categories: [JavaScript, Programming]
+categories: [JavaScript]
 tags: []     # TAG names should always be lowercase
 math: true
 mermaid: true

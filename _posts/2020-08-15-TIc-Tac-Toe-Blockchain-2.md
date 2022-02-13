@@ -1,7 +1,7 @@
 ---
 title: Playing Tic-Tac-Toe as the world watches — An introduction to BlockChain and State Channels (Part 2)
 date: 2020-08-15 09:00:00 +0530
-categories: [Blockchain, Programming]
+categories: [Blockchain]
 tags: []     # TAG names should always be lowercase
 math: true
 mermaid: true
