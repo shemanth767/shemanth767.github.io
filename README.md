@@ -23,6 +23,10 @@ Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installat
 
 ## Installation
 
+* Installing ruby on Debian 11: `apt install ruby-full build-essential`
+* Run `bundle` as a sudoer.
+* Start application with `bundle exec jekyll s --incremental`
+
 [**Use this template**][use-template] to generate a brand new repository and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
 
 Then clone it to your local machine and run:
