@@ -32,7 +32,7 @@ are not of one type or the other. They are on a spectrum. (More on that in later
 C++ is my choice for imperative because it is the least declarative programming language I’ve used (No offense). I
 chose Haskell as the declarative language because I’ve wanted to learn the language for years. Technically, it’s a
 functional programming language, which is a type of declarative. By the way,
-["Learn you a Haskell for Great Good"](http://learnyouahaskell.com/) is an amazing source to learn Haskell.
+["Learn you a Haskell for Great Good"]() is an amazing source to learn Haskell.
 
 As I finish this journey, I’ve documented my learnings in this article. I hope this becomes the article I wish I had
 found when I started.
