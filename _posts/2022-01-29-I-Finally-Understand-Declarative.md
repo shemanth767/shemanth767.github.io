@@ -9,7 +9,7 @@ toc: true
 published: true
 ---
 
-# Background
+## Background
 
 Discussions surrounding declarative and functional programming have been on the rise over the past few years. Out of
 curiosity, I started reading articles to understand how to reap the promised magical benefits. Just like how one
@@ -37,17 +37,17 @@ functional programming language, which is a type of declarative. By the way,
 As I finish this journey, I’ve documented my learnings in this article. I hope this becomes the article I wish I had
 found when I started.
 
-# Disclaimer
+## Disclaimer
 
 To emphasize the difference between these paradigms, I’ve only used rudimentary C++ in most examples. No STL, etc.
 The examples do not compare Haskell and C++ code, instead imperative and declarative programs. It is possible to write
 STL based succinct C++ code, but it doesn’t help understand the essence of imperative.
 
-# Lessons
+## Lessons
 
 
 
-## The program approaches the human language solution
+### The program approaches the human language solution
 
 Consider the following task,
 
@@ -147,7 +147,7 @@ when none of the earlier ones match. This is the closest you can get to the prob
 Declarative programming is a race to make programs comprehensible even to non-programmers. Every other jargon you
 hear surrounding declarative programming are only means to achieve this goal.
 
-## Ability to express logic effortlessly
+### Ability to express logic effortlessly
 
 To write programs declaratively, a language should allow users to compose and reuse elements fluently. The fundamental
 building block of Haskell is a function. It is simple to compose different functions into one — which makes for
@@ -239,7 +239,7 @@ In imperative, the only way to do this is by using loops. Note that even Haskell
 as loops. It is just syntactic sugar that helps programs look closer to the problem domain. This point might seem petty
 for many folks, but the benefits really add up over larger codebases.
 
-## Powerful standard libraries
+### Powerful standard libraries
 
 Emphasizing the point again, some languages make writing declarative programs easier. One important requirement for
 this is to have a great set of standard library utilities that make it easier to work with the problem domain.
@@ -248,7 +248,7 @@ to find the function you want. Having a great standard library alone does not so
 instance. It has an amazing standard library but does not allow you to compose logic elements as easily as Haskell
 does. Streams API is the right step towards declarative, but it is still declarative code in a largely imperative world.
 
-## Define the problem domain
+### Define the problem domain
 
 A language needs to only solve effortlessly in its intended problem domain. Haskell is a general programming language,
 so it works great on primitive data types, arrays, maps, and other standard data structures. If we try to solve for a
@@ -280,7 +280,7 @@ maintainable to perform anything outside its domain of tables (e.g., handling JS
 in syntax matching the human language solution, which for this example is “Get all names of employees who were hired
 after 1st Jan, 2021.”
 
-## A Pleasant Consequence — Pure Functions!
+### A Pleasant Consequence — Pure Functions!
 
 A function is pure if,
 
@@ -305,7 +305,7 @@ _Obligatory xkcd: [https://xkcd.com/1312/](https://xkcd.com/1312/)_
 *These random number generators also take inputs such as system time. As long as even these inputs are constant (which*
 *is infinitely improbable), the output will be the same.*
 
-# Conclusion
+## Conclusion
 
 > “Representation is the essence of programming.” — Fred Brooks
 

@@ -8,7 +8,7 @@ mermaid: true
 toc: true
 ---
 
-# Background
+## Background
 
 Initializing a new react application using create-react-app installs 1900 packages, while the package.json only
 defines 23 dev dependencies. A fresh angular app uses the same number of direct dependencies and installs 1029
@@ -27,7 +27,7 @@ to fix vulnerabilities or critical issues in OS packages. In 2016, the left-pad 
 its maintainer, causing thousands of projects to break worldwide. Such incidents and security vulnerabilities become
 frequent with an increasing number of dependencies. This is not a problem that can be deferred to the future.
 
-# Why are there so many transitive dependencies?
+## Why are there so many transitive dependencies?
 
 Let’s look at some npm packages before going through the reasons,
 
@@ -71,12 +71,12 @@ correct utility functions. So do C++ and PHP. JavaScript did not have a good sta
 developers to depend on external libraries for trivial tasks. In the language’s defense, utility functions have been
 continuously improved with every ECMAScript version.
 
-# How does this affect us?
+## How does this affect us?
 
 We live in a privileged time where a 2GB node_modules directory is acceptable. Memory is no longer a constraint,
 but as shown in the xkcd it only takes one stone to bring your project to its feet.
 
-## Packages can disappear
+### Packages can disappear
 
 While we cherish Open Source for its benefits, we should also be wary of its downsides. One fine day in 2016, the
 maintainer of a widely used package, left-pad, unpublished all of their packages from npm. They had valid reasons to
@@ -84,14 +84,14 @@ do so, but this left the world scrambling as this tiny 7-line package was a depe
 React. Although npm has long since disabled unpublishing popular packages with no prior notice, there are no
 guarantees for obscure packages.
 
-## Abandoned packages
+### Abandoned packages
 
 Most package owners create their packages out of necessity. After a point, they no longer see any benefit in
 maintaining their packages. They usually have to deal with a day job even if they decide to actively maintain it.
 Such packages either thrive on external contributors or die out slowly, leading to possibly unhandled vulnerabilities.
 A package can end up abandoned within a year, given the velocity of the JavaScript ecosystem.
 
-## Inadvertent errors
+### Inadvertent errors
 
 Most package users do not pin their dependency versions, which enables automatic upgrade of minor versions whenever
 available. While in most cases this works fine, there have been cases where this caused issues. In Apr 2020, a minor
@@ -99,7 +99,7 @@ release was deployed for the package [is-promise](https://www.npmjs.com/package/
 [unintended](https://medium.com/@forbeslindesay/is-promise-post-mortem-cab807f18dcc) bugs causing most of its dependents
 to break. Even though this was fixed within 3 hours, it should serve as a cautionary tale.
 
-## Malicious actors
+### Malicious actors
 
 Package maintainers are not always well-intentioned. The owner of the popular package, ua-parser-js, transferred their
 package ownership to another user who used their privileges to publish malware using a postinstall script. npm took
@@ -107,9 +107,9 @@ down these malicious packages within a few hours, but the damage was done.
 
 Reducing the number of dependencies used helps reduce the surface area for such issues to arise.
 
-# How can we solve this?
+## How can we solve this?
 
-## Stop using dependencies for simple tasks
+### Stop using dependencies for simple tasks
 
 Write your own methods for minor tasks such as checking the type of a variable or manipulating a string, instead
 of depending on a package. Prefer implementing the feature if it takes less than 10 minutes to do so. If this is not
@@ -117,7 +117,7 @@ an option or if the resulting code is hard to maintain, **prefer using packages 
 [lodash](https://lodash.com/) or [underscore.js](https://underscorejs.org/). You should use a trigonometry dependency
 instead of one for cosine.
 
-## Prefer packages with less number of transitive dependencies
+### Prefer packages with less number of transitive dependencies
 
 Most of the above-mentioned problems cannot be fixed if they are transitive dependencies. A broken transitive dependency
 would mean that the direct dependency needs to be updated first before the direct dependency can be updated. If possible,
@@ -126,7 +126,7 @@ with a higher number of dependents as this can guarantee any vulnerabilities to 
 
 If the dependencies are justified and the risks are considered, feel free to use any number of them!
 
-# Conclusion
+## Conclusion
 
 This is a deeply rooted problem that is not easily solvable even though I’ve listed “solutions”. Most dependencies in
 node_modules come as transitive dependencies, which cannot be avoided or controlled. The best we can do is raise
@@ -136,7 +136,7 @@ awareness of the dangers of including packages recklessly.
 
 Follow me on [Twitter](https://twitter.com/saihemanth9019) :)
 
-# Sources
+## Sources
 
 * [https://www.reddit.com/r/programming/](https://www.reddit.com/r/programming/)
 * [https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm](https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm)

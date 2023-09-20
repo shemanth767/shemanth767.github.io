@@ -10,64 +10,64 @@ mermaid: true
 
 
 
-# Overview
+## Overview
 
 I've finally settled on a framework that works for me reliably. It has a lot of moving parts, but AWS made it
 so simple to manage and synchronize them.
 
 ![](/assets/img/nextcloud-2-post/ec2-nc.drawio.svg)
 
-# Description
+## Description
 
-## EC2 Instance
+### EC2 Instance
 
 EC2 Instance is the t3a.small server that I'm renting to run NextCloud on. It contains 2 vCPUs and 2GB of Memory.
 I think T3 is the best tool for my use case here. In the words of [Amazon](https://aws.amazon.com/ec2/instance-types/t3/)
 itself,
 > T3 instances are designed for applications with moderate CPU usage that experience temporary spikes in use.
 
-### 1 -- NextCloud
+#### 1 -- NextCloud
 
 This is the heart of everything. It's the main NextCloud application.
 
-### 2 -- MySQL DB
+#### 2 -- MySQL DB
 
 NextCloud maintains a local disk DB that keeps track of the metadata for files updated i.e., the name of each file, when it
 was uploaded, directory path etc. Optionally, this DB can also store the thumbnails of images so that users can only
 get the whole image when needed.
 
-### 3 -- Redis Cache
+#### 3 -- Redis Cache
 
 To serve frequently accessed files quickly, NextCloud maintains a cache in Redis.
 
-### 4 -- Apache Server
+#### 4 -- Apache Server
 
 The final piece of the core NextCloud infrastructure is an apache server for the NextCloud Web application and APIs. This
 allows seamless connectivity from NextCloud's Android app!
 
-### 5 -- Static IP
+#### 5 -- Static IP
 
 AWS gives one free static IP for every *running* EC2 instance. You get charged hourly if you have the static IP, but the EC2
 instance is shut down. This becomes important in the cost analysis :/
 
-## Data Layer
+### Data Layer
 
-### 6 -- S3 Storage Bucket
+#### 6 -- S3 Storage Bucket
 
 NextCloud is configured to store all files in an S3 Bucket. Accesses from this bucket are relatively slow when compared
 to disk fetches, so Redis comes in handy here. This bucket can grow infinitely (not really), so scalability FTW.
 
-### 7 -- S3 Access Logs Bucket
+#### 7 -- S3 Access Logs Bucket
 
 This is an optional element where access logs to the main bucket are stored.
 
-### 8 -- Offline Backups
+#### 8 -- Offline Backups
 
 This is a optional and manual backup I've configured to sync data from the bucket onto my local disk. Can't be too cautious.
 
-## Other Infra
+### Other Infra
 
-### 9 -- Lambda Functions
+#### 9 -- Lambda Functions
 
 EC2 Instances are charged by the hour. So, if I can schedule the hours in which my instance should be up, I can
 significantly cut down costs. This is done by the lambda functions,
@@ -75,7 +75,7 @@ significantly cut down costs. This is done by the lambda functions,
 * StartNCInstance - Starts this particular instance
 * StopNCInstance - Stops this particular instance
 
-### 10 -- EventBridge
+#### 10 -- EventBridge
 
 Lambda Functions cannot run themselves and need an external trigger. EventBridge lets me trigger the configured lambda
 functions using a cron trigger. Following are the triggers I have configured,
@@ -85,18 +85,18 @@ functions using a cron trigger. Following are the triggers I have configured,
 
 This setup keeps my instance up for 10 hours a day.
 
-# Cost Analysis
+## Cost Analysis
 
-## Breakdown
+### Breakdown
 
-### EC2 Instance
+#### EC2 Instance
 
 **Monthly Hours:** 30 Days * 10 Hours per day = 300 Hours  
 **Cost per Hour:** 0.0123$  
 
 **Actual Monthly Cost:** 3.69$ 
 
-### EBS Storage
+#### EBS Storage
 
 The disk that EC2 uses is an Elastic Block Storage which is also charged. However, it's free for the first 12 months! 
 
@@ -106,7 +106,7 @@ The disk that EC2 uses is an Elastic Block Storage which is also charged. Howeve
 
 **Actual Monthly Cost:** 0$ (Free-tier!) 
 
-### Elastic IP Address
+#### Elastic IP Address
 
 As mentioned before, the static IP Address is free whenever it's attached to an active EC2 Instance. So, only the hours
 when the IP is not attached to a running instance is billed.
@@ -116,7 +116,7 @@ when the IP is not attached to a running instance is billed.
 
 **Actual Monthly Cost:** 2.1$ 
 
-### S3 Storage
+#### S3 Storage
 
 5GB Storage per month is free for the first twelve months. 
 
@@ -126,7 +126,7 @@ when the IP is not attached to a running instance is billed.
 
 **Actual Monthly Cost** 0.125$
 
-### S3 Get Requests
+#### S3 Get Requests
 
 I was surprised to learn that S3 bills for the number of requests you make to the storage. The free tier subsidies 20,000
 GET requests per month.
@@ -137,7 +137,7 @@ GET requests per month.
 
 **Actual Monthly Cost:** 0$
 
-### S3 PUT, COPY, and POST Requests
+#### S3 PUT, COPY, and POST Requests
 
 The free tier subsidies 2,000 PUT requests per month.
 
@@ -147,7 +147,7 @@ The free tier subsidies 2,000 PUT requests per month.
 
 **Actual Monthly Cost:** 0.005$
 
-### Lambda
+#### Lambda
 
 AWS gives out 3.2 Million seconds of compute time and 1 Million free requests per month. This is ALWAYS FREE :)
 
@@ -157,11 +157,11 @@ AWS gives out 3.2 Million seconds of compute time and 1 Million free requests pe
 
 **Actual Monthly Cost:** 0$ (Free-tier!)
 
-### Event Bridge
+#### Event Bridge
 
 It's free.
 
-## Total Costs
+### Total Costs
 
 | Service | Estimated Cost  | Actual Cost  |
 |---|---|---|

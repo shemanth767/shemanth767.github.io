@@ -8,7 +8,7 @@ mermaid: true
 toc: true
 ---
 
-# Introduction
+## Introduction
 
 **This two-part series is a brief introduction to the concepts of Ethereum and State Channels by building a Tic-Tac-Toe**
 **application. Read Part 1 [here](https://medium.com/@saihemanth9019/playing-tic-tac-toe-as-the-world-watches-an-introduction-to-blockchain-and-state-channels-part-78aa2b01f76b).**
@@ -17,7 +17,7 @@ You have solved all the conventional issues of playing a bet match of Tic-Tac-To
 the Ethereum network. Now, you are facing foundational problems of a Blockchain itself which are speed and cost of
 transactions.
 
-## Why are transactions on Blockchain slow?
+### Why are transactions on Blockchain slow?
 
 A Blockchain is fundamentally a set of blocks and each block is made up of transactions. Only transactions included
 in blocks are considered to be valid. A block can consist of a predefined number of transactions only. In Ethereum,
@@ -39,7 +39,7 @@ network, it is advised to wait for a minimum number of blocks (6 blocks in Bitco
 created after B. The affirmation that a block will not be revoked once added to the blockchain is known as Finality.
 Ethereum has a finality time of 2.5 minutes.
 
-## Why are transactions on Blockchain expensive?
+### Why are transactions on Blockchain expensive?
 
 As mentioned before, the miners need to solve a cryptographic puzzle using their computers to create a block and
 include your transaction. Computers need electricity and hardware, neither of which are free. To make the act of
@@ -48,7 +48,7 @@ the transaction fee depends on various factors such as average electricity and h
 
 > **Note:** The earlier technical details are not required to understand the following sections.
 
-# The Solution
+## The Solution
 
 **Don’t use a Blockchain to solve petty problems.**
 
@@ -75,7 +75,7 @@ moves and updated board states.
 This brings up a crucial problem, how do we prove that there is no impersonation? How do we prove that if one receives
 a message from Alice, the message is actually created and sent by Alice?
 
-## Digital Signatures
+### Digital Signatures
 
 Every Ethereum account is identified by a private/public key. These keys have one peculiar property. It is possible
 to encrypt any data with the public key and this encryption can only be reversed with the private key. This is known
@@ -94,7 +94,7 @@ using private key) of the move to prove that he is not being impersonated.
 
 For convenience, the game can be divided into a set of states,
 
-## Intent State
+### Intent State
 
 Before a game even begins, the players need to share an intent to play a game together. Alice and Bob will each create
 a message of the following format and send to their opponent.
@@ -111,7 +111,7 @@ In this message, only the address is allowed to be different for the player inte
 discarded. contractAddress is the agreed upon smart contract to be used. Once a player receives and sends an
 intent he agrees with, it is decided that the game is happening.
 
-## Depositing Funds
+### Depositing Funds
 
 Players will now call `deposit()` function on the smart contract and deposit the bet amounts.
 
@@ -139,7 +139,7 @@ deposit(Intent senderIntent, Intent opponentIntent) {
 The first player depositing the betAmount is assigned as Alice, and the next player will be Bob. The function requires
 intents of both players before accepting any funds.
 
-## Move State
+### Move State
 
 Once both players see that the bets have been deposited by checking the state of the Smart Contract, Alice makes her
 first move and sends a message of the following format to Bob along with the digital signature through the messaging
@@ -170,7 +170,7 @@ Since, both players are friendly, the game continues in a fair manner.
 
 The game proceeds with incrementing turn numbers. At the final turn, considering Alice wins, she makes the last move.
 
-## Withdraw
+### Withdraw
 
 Either of the players can call the `withdraw()` function (once the final move of the game is done) on the smart
 contract by sending the last two moves of the game.
@@ -202,7 +202,7 @@ withdraw(Move preFinalMove, Move finalMove) {
 The last two moves, one by each player, are required to avoid a single player from unanimously creating a final move
 and withdrawing funds.
 
-## What happens when a player makes an invalid move or stays inactive?
+### What happens when a player makes an invalid move or stays inactive?
 
 Players can always reject invalid moves by the opponent. Hence, it can be considered to be a special case of opponent
 inactivity, where the other player refuses to make a valid move. In these scenarios, the active player can call the

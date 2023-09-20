@@ -8,7 +8,7 @@ mermaid: true
 toc: true
 ---
 
-# Introduction
+## Introduction
 
 **This 2-part series is a brief introduction to the concepts of Ethereum and State Channels by building a**
 **tic-tac-toe application.**
@@ -34,7 +34,7 @@ You read up online for a solution to these problems and come across the followin
 
 *Note: Feel free to skip the sections you are familiar with.*
 
-# Blockchain
+## Blockchain
 
 In layman terms, a Blockchain is a decentralized network that allows one to make transactions (i.e., transfer of funds
 or data between users) in such a way that no single entity (a bank or a person) can control or tamper. In a Blockchain,
@@ -43,7 +43,7 @@ be able to afford it.
 
 Read more on Blockchain [here](https://medium.com/swlh/a-simple-guide-to-blockchain-technology-4589971e6d03).
 
-# Multi-Signature Wallets
+## Multi-Signature Wallets
 
 A Blockchain transaction requires the owner of the account/wallet to prove that they are the one making the
 transaction, similar to how one has to enter the UPI PIN on any UPI app before making a payment. Unlike traditional
@@ -59,7 +59,7 @@ the funds are safe.
 
 There is still the problem of players making an invalid move. You do further reading and stumble upon some more topics,
 
-# Ethereum
+## Ethereum
 
 Ethereum is yet another Blockchain BUT it does not limit itself to monetary transactions like Bitcoin. It can execute
 any programmable function in such a way that no one entity can tamper the output. The output of the function is
@@ -71,7 +71,7 @@ proportional to the number of instructions of the function you are trying to exe
 
 Read more on [Ethereum](https://medium.com/@micheledaliessi/what-is-ethereum-f4c5e566ff77) here.
 
-# Smart Contracts
+## Smart Contracts
 
 Functions to be computed by the Ethereum network is written in the form of Smart Contracts. Consider a Smart Contract
 to be a literal replacement for real life contracts. Once a real life contract is in place, the specified rules are

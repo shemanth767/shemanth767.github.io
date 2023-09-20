@@ -13,7 +13,7 @@ mermaid: false
 
 Let's dive in!
 
-# Introduction
+## Introduction
 
 Database indexes can be both a blessing and a curse for those seeking to optimize query performance. Optimizing indexes
 on SQL Server, in particular, can be a tricky task due to its ability to handle a wide range of workloads. These
@@ -71,7 +71,7 @@ is the data format in which the table is physically stored.
 CREATE CLUSTERED COLUMNSTORE INDEX cci ON dbo.fact_employment_trail;
 ```
 
-# Architecture
+## Architecture
 
 To truly understand how Columnstore Indexes benefit OLAP queries, it's important to understand how it's implemented
 in SQL Server.
@@ -104,9 +104,9 @@ merges results from both the compressed column segments and the deltastore to ha
 A background process takes care of merging rows from the deltastore into the columnstore index when the number of rows reaches a threshold.
 
 
-# Benefits and Disadvantages of Columnstore indexes
+## Benefits and Disadvantages of Columnstore indexes
 In which particular scenarios are they expected to perform really well.
 
-# Choosing the right design
+## Choosing the right design
 
-# Conclusion
+## Conclusion

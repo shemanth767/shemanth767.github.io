@@ -9,7 +9,7 @@ toc: true
 published: true
 ---
 
-# Overview
+## Overview
 
 This article summarizes my descent into insanity and the following events that transpired on 30th
 July 2022. More formally, as I had mentioned in my previous blog post, I was looking to replace Google Drive and Photos
@@ -26,7 +26,7 @@ My goals are,
 
 ![](/assets/img/nextcloud-post/basic-nextcloud-plan.jpg)
 
-# Preparing my existing server
+## Preparing my existing server
 
 I've been using a Digital Ocean droplet (a Virtual Private Server) for the past 2 years to host Bitwarden
 password manager and some ad-hoc testing for ongoing projects.
@@ -42,14 +42,14 @@ Couple of things to note,
 
 Okay, first problem to tackle.
 
-## Problem #0: Setting up SSH login to the server
+### Problem #0: Setting up SSH login to the server
 I've recently migrated to a new PC, so I had to enable SSH login from this one. It was a very straight-forward process.
 
 1. Copy over public key from local to remote server's /root/.ssh/authorized_keys
 2. Restart ssh daemon, `service sshd restart`
 3. SSH into the server.
 
-## Problem #1: Change the domain name of the server
+### Problem #1: Change the domain name of the server
 
 I had an A record configured on Bluehost to point "verylongname.saihemanth.com" to the static IP
 of my server. Purely for aesthetic reasons, I wanted to change it to "short.saihemanth.com" instead.
@@ -79,9 +79,9 @@ With no other resort, I exported all my passwords using the Bitwarden Web UI and
 
 Not elegant, but problem solved!
 
-# NextCloud
+## NextCloud
 
-## Problem #2: Setting up Nextcloud
+### Problem #2: Setting up Nextcloud
 
 I took a backup of the droplet to start with — in case I brick the server. DigitalOcean bills me for keeping backups too.
 Thanks, DO 👍
@@ -122,7 +122,7 @@ Thanks, DO 👍
 
 After 4 hours, I finally have a working NextCloud instance running! *(Not Really)*
 
-## Problem #3: Setting up Backups
+### Problem #3: Setting up Backups
 
 NextCloud AIO doesn't seem to have support for automated backups. Admin needs to explicitly generate backups by
 clicking a button in settings, upon which an encrypted backup is created and stored. I would've liked
@@ -140,9 +140,9 @@ The files were downloading at 25KBps! It will take forever to download 15GB back
 viable as a solution. I forboded to one of the reasons before. This server is all the way in Canada, and this
 trans-continental data transfer was poor. However, I partially felt it also had to do with DigitalOcean itself.
 
-# Migrating to AWS
+## Migrating to AWS
 
-## Problem #4: Improve transfer speeds
+### Problem #4: Improve transfer speeds
 
 There were a couple of reasons why I wanted to dabble with AWS,
 
@@ -164,7 +164,7 @@ Everything after this was smooth,
 
 Once again, I finally have a working NextCloud instance running!
 
-## Problem #5: Stress Testing & Performance
+### Problem #5: Stress Testing & Performance
 
 8 hours in.
 
@@ -190,11 +190,11 @@ I tried out rsync of backups similar to before, and this time it downloads at 8M
 
 Okay, I finally finally have a working NextCloud instance! For real.
 
-# Retrospective
+## Retrospective
 
 Comparing my final setup against the goals I set initially.
 
-### 🔘 Reliability
+#### 🔘 Reliability
 
 I'm not happy with storing my files in the instance's disk. It seems fragile and bound to fail at some point.
 Increasing storage also requires me to bump up the instance's config, which is far from ideal. For e.g., the current
@@ -203,18 +203,18 @@ lightsail instance comes with 80GB disk. If I need more space, I'll have to incr
 If the server dies, I have mechanisms to recover the setup using a backup. Creating and syncing backups is a
 low effort task. However, I might lose the recent uploads that aren't backed up. There's scope for improvement here.
 
-### ☑️ Security
+#### ☑️ Security
 
 I don't see any obvious security flaws here. Running [NextCloud Scan](https://scan.nextcloud.com/) gives an A rating.
 There's SSL in place. Only required ports are open. There's probably more I can do here, but they only yield
 diminishing returns. 
 
-### ☑️ Responsiveness
+#### ☑️ Responsiveness
 
 After I moved to AWS Lightsail, the website and Android app are blazing fast. The uploads happen at upwards of 8MBps,
 and the experience is super smooth.
 
-### ❌ Cost Effectiveness
+#### ❌ Cost Effectiveness
 
 The entire setup is just one Lightsail instance. The lightsail instance (2vCPUs/4GB/80GB Disk)
 costs \\$20 per month. In contrast, Google One subscription costs Rs.135 in India, \\$1.7.
