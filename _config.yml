@@ -18,7 +18,7 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Sai Hemanth Blog                          # the main title
+title: Sai Hemanth's Blog                          # the main title
 
 tagline: A 9-5 SDE that occasionally writes on Software Development.   # it will display as the sub-title
 
