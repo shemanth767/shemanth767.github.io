@@ -96,11 +96,12 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping: # optional, default to 'pathname'
+    # Use config from https://giscus.app/
+    repo: shemanth767/shemanth767.github.io
+    repo_id: R_kgDOGy_JxA
+    category: General
+    category_id: DIC_kwDOGy_JxM4CfNhk
+    mapping: pathname
     input_position: # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
